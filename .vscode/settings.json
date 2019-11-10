@@ -2,7 +2,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
-  "editor.formatOnSave": true,
+  "stylelint.enable": true,
   "eslint.alwaysShowStatus": true,
   "eslint.validate": [
     "javascript",
