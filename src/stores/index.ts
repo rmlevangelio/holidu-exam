@@ -37,7 +37,6 @@ export function configureStore() {
 }
 
 // Selectors
-
 const getOffersState = (state: RootState) => state.offers;
-
 export const getOffers = createSelector(getOffersState, OffersReducer.getOffers);
+export const getOffersLoading = createSelector(getOffersState, OffersReducer.getLoading);

@@ -9,7 +9,7 @@ export enum OffersActionTypes {
 }
 
 export const offersActions = {
-  load: createAction(OffersActionTypes.Load)(),
+  load: createAction(OffersActionTypes.Load)<string>(),
   success: createAction(OffersActionTypes.Success)<Offers[]>(),
   fail: createAction(OffersActionTypes.Fail)<string>(),
   reset: createAction(OffersActionTypes.Reset),
