@@ -1,9 +1,9 @@
 import { getType } from 'typesafe-actions';
-import { Offers } from 'models/Offers';
+import { Offer } from 'models/Offer';
 import { offersActions, OffersAction } from './actions';
 
 export interface State {
-  offers: Offers[];
+  offers: Offer[];
   error: string;
   loading: boolean;
 }

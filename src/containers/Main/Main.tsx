@@ -1,28 +1,18 @@
 import * as React from 'react';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Spinner,
-  Fade,
-} from 'reactstrap';
+import { Container, Spinner, CardDeck } from 'reactstrap';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { getOffers, RootState, getOffersLoading } from 'stores';
 
-import { Offers } from 'models/Offers';
+import { Offer } from 'models/Offer';
 import { offersActions } from 'stores/offers/actions';
+import { chunkArray } from 'utils/helpers';
+import OfferItem from 'components/OfferItem';
 
 import './Main.scss';
 
 interface MapStateProps {
-  offers: Offers[];
+  offers: Offer[];
   isLoading: boolean;
 }
 
@@ -37,42 +27,24 @@ const Main = ({ offers, isLoading, getOffers }: Props) => {
     getOffers(searchTerm);
   }, [getOffers]);
 
+  const splitOffers = offers && chunkArray(offers, 3);
+
   return (
     <Container>
-      <Row>
-        <Col>
-          <h1>{searchTerm}</h1>
+      <h1>{searchTerm}</h1>
 
-          {isLoading && <Spinner color="primary" />}
-          <div className="offers">
-            {offers &&
-              offers.map((offer: any) => {
-                const mainPhoto = offer.photos[0].hr;
-                const name = `${offer.details.name} ${offer.details.shortName[0]}`;
-                return (
-                  <Fade in={true} tag="h5" className="offers__item">
-                    <Card>
-                      <CardImg top width="100%" src={mainPhoto} alt="Card image cap" />
-                      <CardBody>
-                        <CardTitle>
-                          <strong>{name}</strong>
-                        </CardTitle>
-                        <CardSubtitle>
-                          <strong>{offer.details.guestsCount}</strong> pers,{' '}
-                          <strong>{offer.details.bedroomsCount}</strong> bedrooms{' '}
-                          <strong>{offer.details.shortName[0]}</strong>
-                        </CardSubtitle>
-                        <CardText>
-                          <div></div>
-                        </CardText>
-                      </CardBody>
-                    </Card>
-                  </Fade>
-                );
+      {isLoading && <Spinner color="primary" />}
+      <div className="offers">
+        {offers &&
+          splitOffers.map((perChunk, index) => (
+            <CardDeck key={`row_${index}`} className="offers__row">
+              {perChunk.map((offer: Offer) => {
+                const mainPhoto = offer.photos[1].t;
+                return <OfferItem mainPhoto={mainPhoto} {...offer} />;
               })}
-          </div>
-        </Col>
-      </Row>
+            </CardDeck>
+          ))}
+      </div>
     </Container>
   );
 };

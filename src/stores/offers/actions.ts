@@ -1,5 +1,5 @@
 import { ActionType, createAction } from 'typesafe-actions';
-import { Offers } from 'models/Offers';
+import { Offer } from 'models/Offer';
 
 export enum OffersActionTypes {
   Load = '[Offers] Load',
@@ -10,7 +10,7 @@ export enum OffersActionTypes {
 
 export const offersActions = {
   load: createAction(OffersActionTypes.Load)<string>(),
-  success: createAction(OffersActionTypes.Success)<Offers[]>(),
+  success: createAction(OffersActionTypes.Success)<Offer[]>(),
   fail: createAction(OffersActionTypes.Fail)<string>(),
   reset: createAction(OffersActionTypes.Reset),
 };

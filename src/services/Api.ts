@@ -1,7 +1,8 @@
 class Api {
+  public searchTerm: string;
+
   private apiUrl = 'https://api.holidu.com';
   private apiVersion = 'v6';
-  public searchTerm = 'Mallorca, Spanien';
 
   public getOffers = () =>
     fetch(
