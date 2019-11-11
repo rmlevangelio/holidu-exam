@@ -1,4 +1,4 @@
-export const chunkArray = (arr: Array<any>, chunkSize: number) => {
+export function chunkArray(arr: Array<any>, chunkSize: number): Array<any> {
   const newArray = [];
 
   while (arr.length) {
@@ -6,4 +6,4 @@ export const chunkArray = (arr: Array<any>, chunkSize: number) => {
   }
 
   return newArray;
-};
+}

@@ -18,7 +18,7 @@ const fetchOffers = async searchTerm => {
 function* load(action: OffersAction) {
   try {
     const data: RawSearchResponse = yield call(fetchOffers, action.payload);
-    const offers: Offer[] = data.offers.map((offer: RawOffer) => ({
+    const results: Offer[] = data.offers.map((offer: RawOffer) => ({
       id: offer.id,
       name: `${offer.details.name} ${offer.details.shortName[0]}`,
       shortName: offer.details.shortName[0],
@@ -31,7 +31,7 @@ function* load(action: OffersAction) {
       apartmentType: offer.details.apartmentType,
       photos: offer.photos,
     }));
-    yield put(offersActions.success(offers));
+    yield put(offersActions.success(results));
   } catch (e) {
     yield put(offersActions.fail(e));
   }

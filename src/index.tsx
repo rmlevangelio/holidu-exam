@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { configureStore } from './stores';
-import Main from './containers/Main/Main';
+
+import { configureStore } from 'stores';
+import Main from 'containers/Main/Main';
+
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
