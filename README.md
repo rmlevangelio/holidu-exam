@@ -1,8 +1,10 @@
 # Holidu Exam
 
 ### Prerequisites
-Node version: v8.10.0
-Npm version: 5.6.0
+
+*Node version:* v8.10.0
+
+*Npm version:* 5.6.0
 
 In order to run this project:
 ```bash
