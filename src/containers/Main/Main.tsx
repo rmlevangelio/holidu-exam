@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Spinner, CardDeck } from 'reactstrap';
+import { Container, CardDeck } from 'reactstrap';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { getOffers, RootState, getOffersLoading } from 'stores';
@@ -7,7 +7,8 @@ import { getOffers, RootState, getOffersLoading } from 'stores';
 import { Offer } from 'models/Offer';
 import { offersActions } from 'stores/offers/actions';
 import { chunkArray } from 'utils/helpers';
-import OfferItem from 'components/OfferItem';
+import OfferItem from 'components/OfferItem/OfferItem';
+import Spinner from 'components/Spinner/Spinner';
 
 import './Main.scss';
 
