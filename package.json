@@ -26,6 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "eslint \"src/**/*.{ts,tsx}\"",
+    "stylelint": "stylelint src/**/*.scss --syntax scss",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
